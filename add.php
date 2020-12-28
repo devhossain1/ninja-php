@@ -1,6 +1,6 @@
 
 <?php
-
+include('config/db_connect.php');
 $email = $title = $ingredients = '';
 
 $errors = array('email'=>'', 'title'=>'', 'ingredients'=>'');
@@ -47,10 +47,24 @@ if(isset($_POST['submit'])){
        } 
     
     if(array_filter($errors)){
-       echo 'the errors in the form';
+       //echo 'the errors in the form';
     }else{
-       echo 'the form is valid';
-       
+       //echo 'the form is valid';
+      $email = mysqli_real_escape_string($conn, $_POST['email']);
+      $title = mysqli_real_escape_string($conn, $_POST['title']);
+      $ingredients = mysqli_real_escape_string($conn, $_POST['ingredients']);
+    //create sql
+      $sql = "INSERT INTO ninjas (title, email, ingredients) VALUES('$title', '$email', '$ingredients')";
+      //save db and check
+        if(mysqli_query($conn, $sql)){
+            //success
+            header('location: index.php');
+        }else{
+            //fail
+            echo 'query error:' . mysqli_error($conn);
+        }
+        
+        
     }
     
 }
