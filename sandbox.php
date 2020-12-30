@@ -1,12 +1,12 @@
 <?php
-//ternary operator
-$score = 50;
-//if($score>30){
-//    echo 'score is high !';
-//}else{
-//    echo 'low score !';
-//}
-echo $score>30 ? 'high score!' : 'low score!';
+$score=40;
+//superglobals
+//$_GET['name], $_POST['name']
+
+echo $_SERVER['SERVER_NAME'] . '<br/>';
+echo $_SERVER['REQUEST_METHOD'] . '<br/>';
+echo $_SERVER['SCRIPT_FILENAME'] . '<br/>';
+echo $_SERVER['PHP_SELF'] . '<br/>';
 
 
 ?>
