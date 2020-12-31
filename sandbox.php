@@ -1,12 +1,15 @@
 <?php
-$score=40;
-//superglobals
-//$_GET['name], $_POST['name']
+//session
+if(isset($_POST['submit'])){
+    
+    session_start();
+    $_SESSION['name']= $_POST['name'];
+    echo $_SESSION['name'];
+    
+    header('Location: index.php');
+    
+}
 
-echo $_SERVER['SERVER_NAME'] . '<br/>';
-echo $_SERVER['REQUEST_METHOD'] . '<br/>';
-echo $_SERVER['SCRIPT_FILENAME'] . '<br/>';
-echo $_SERVER['PHP_SELF'] . '<br/>';
 
 
 ?>
@@ -19,6 +22,10 @@ echo $_SERVER['PHP_SELF'] . '<br/>';
     <title>ninja-php</title>
 </head>
 <body>
-    <h2><?php echo $score>30 ? 'high score!' : 'low score!'; ?></h2>
+  <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="POST">
+     <input type="text" name="name">
+     <input type="submit" name="submit" value="submit"> 
+  
+  </form>
 </body>
 </html>
