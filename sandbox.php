@@ -1,37 +1,28 @@
 <?php
-//session
-if(isset($_POST['submit'])){
-    //cookies for gender
-     setcookie('gender', $_POST['gender'], time() + 86400); 
-    
-    session_start();
-    $_SESSION['name']= $_POST['name'];
-    echo $_SESSION['name'];
-    
-    header('Location: index.php');
-    
+
+//file system part-1
+//$quotes = readfile('readme.txt');
+//echo $quotes;
+
+$file = 'readme.txt';
+
+if(file_exists($file)){
+//    //read file
+//    echo readfile($file) . '<br/>';
+//    //copy file
+//    copy($file, 'quotes.txt');
+//    //sbsolute path
+//    echo realpath($file) . '<br/>';
+//    //filesize
+//    echo filesize($file) . '<br/>';
+//    //rename
+//    rename($file, 'test.txt');  
+}else{
+    echo 'the file does not exists';
 }
 
+//make director
 
+ mkdir('quotes');
 
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ninja-php</title>
-</head>
-<body>
-  <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="POST">
-     <input type="text" name="name">
-     <select name="gender">
-         <option value="male">male</option>
-         <option value="female">female</option>
-     </select>
-     <input type="submit" name="submit" value="submit"> 
-  
-  </form>
-</body>
-</html>
