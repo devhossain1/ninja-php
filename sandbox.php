@@ -1,26 +1,32 @@
 <?php
 
-//file system part-2
-$file = 'quotes.txt';
+//class
 
-//opening a file for reading
-//$handle = fopen($file, 'r');
-$handle = fopen($file, 'a+');
-//read the file
-    //echo fread($handle, filesize($file));
-    //echo fread($handle, 122);
-//read a single line
-//echo fgets($handle);
-//echo fgets($handle);
+class User {
+    
+  public $email;
+  public $name;
+  
+  public function __construct($name,$email){
+      //$this->email = 'mario@thenetninja.co.uk';
+      //$this->name = 'mario';
+      $this->email = $email;
+      $this->name = $name;
+    }
+    
+  public function login(){
+      //echo 'the user logged in';
+     echo $this->name . ' logged in'; 
+    } 
+}
+//$userOne = new User();
+//
+//$userOne->login();
+//echo $userOne->email;
 
-//read a single charecter
-//echo fgetc($handle);
-//echo fgetc($handle);
-
-//writing to a file
-fwrite($handle, "\nEverything popular is wrong");
-
-fclose($handle);
-//unlink($file);
+$userTwo = new User('yoshi', 'yoshi@thenetninja.co.uk');
+//echo $userTwo->name;
+//echo $userTwo->email;
+$userTwo->login();
 
 ?>
